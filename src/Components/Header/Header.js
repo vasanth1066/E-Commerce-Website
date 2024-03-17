@@ -3,8 +3,8 @@ import React from "react";
 import Cart from "../Cart/Cart";
 const Header = () => {
   return (
-    <Navbar bg="dark" expand="sm" variant="dark">
-      <Navbar.Brand href="#" className="font-arial">
+    <Navbar bg="dark" expand="lg" variant="dark">
+      <Navbar.Brand href="#" className="w-50  justify-content-end">
         Shopping
       </Navbar.Brand>
 

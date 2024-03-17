@@ -1,52 +1,31 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
+import CartContext from "../Store/CartContext";
 
 function Cart() {
-  const [cartElements, setCartElements] = useState([
-    {
-      title: "Colors",
-      price: 100,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      quantity: 2,
-    },
-    {
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      quantity: 3,
-    },
-    {
-      title: "Yellow and Black Colors",
-      price: 70,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-      quantity: 1,
-    },
-  ]);
+  const { items, removeItem } = useContext(CartContext);
+  console.log("incart", items);
+  let qty = 0;
+  items.map((item) => {
+    qty = qty + Number(item.items.quantity);
+  });
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const removeItemHandler = (keys) => {
-    const updatedCart = [...cartElements];
-    if (updatedCart[keys].quantity > 1) {
-      updatedCart[keys].quantity -= 1;
-    } else {
-      updatedCart.splice(keys, 1);
-    }
-    setCartElements(updatedCart);
+  const removeItemHandler = (id) => {
+    removeItem(id);
   };
 
   return (
     <>
       <Button variant="secondary" onClick={handleShow}>
-        Cart Items
+        Cart Items-{qty}
       </Button>
 
       <Modal show={show} onHide={handleClose} size="lg">
@@ -65,21 +44,21 @@ function Cart() {
               </tr>
             </thead>
             <tbody>
-              {cartElements.map((items, keys) => (
-                <tr key={keys}>
+              {items.map((item, index) => (
+                <tr key={index}>
                   <td>
                     <Image
-                      src={items.imageUrl}
+                      src={item.items.imageUrl}
                       style={{ width: "70px", height: "70px" }}
                     />
                   </td>
-                  <td>{items.title}</td>
-                  <td>Rs-{items.price}</td>
-                  <td>{items.quantity}</td>
+                  <td>{item.items.title}</td>
+                  <td>Rs-{item.items.price}</td>
+                  <td>{item.items.quantity}</td>
                   <td>
                     <Button
                       variant="danger"
-                      onClick={() => removeItemHandler(keys)}
+                      onClick={() => removeItemHandler(item.items.id)}
                     >
                       Remove
                     </Button>
