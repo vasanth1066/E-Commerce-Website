@@ -33,7 +33,6 @@ const Display = () => {
   ];
   return (
     <Container>
-      <h1>hi</h1>
       <Row>
         {productsArr.map((item, key) => (
           <Col key={key} xs={12} md={3} ig={6} className="mb-4">
