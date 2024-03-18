@@ -4,10 +4,12 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Store from "./Components/Pages/Store";
 import About from "./Components/Pages/About";
+import Home from "./Components/Pages/Home";
 
 const router = createBrowserRouter([
   { path: "/", element: <Store /> },
   { path: "/About", element: <About /> },
+  { path: "/Home", element: <Home /> },
 ]);
 
 function App() {

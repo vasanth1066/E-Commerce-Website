@@ -24,7 +24,7 @@ function Cart() {
 
   return (
     <>
-      <Button variant="secondary" onClick={handleShow}>
+      <Button variant="light" onClick={handleShow}>
         Cart Items-{qty}
       </Button>
 

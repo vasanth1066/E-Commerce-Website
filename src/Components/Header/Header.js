@@ -3,7 +3,7 @@ import React from "react";
 import Cart from "../Cart/Cart";
 const Header = (props) => {
   return (
-    <Navbar bg="dark" expand="lg" variant="dark">
+    <Navbar bg="secondary" expand="lg" variant="dark">
       <Navbar.Brand href="#" className="w-50  justify-content-center">
         {props.heading}
       </Navbar.Brand>

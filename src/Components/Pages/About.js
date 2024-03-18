@@ -1,16 +1,24 @@
 import React from "react";
 
 import MainHeader from "../Header/MainHeader";
-import { Navbar, Container } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
+import Footer from "../Header/Footer";
 const About = () => {
   return (
     <>
       <MainHeader></MainHeader>
-      <Navbar bg="dark" expand="lg" variant="dark">
-        <Navbar.Brand href="#" className="w-50  justify-content-center ">
-          About
-        </Navbar.Brand>
+      <Navbar bg="secondary" expand="lg" variant="dark">
+        <Navbar.Text
+          href="#"
+          className="align-items-center justify-content-center text-center"
+          style={{
+            fontSize: "40px",
+            color: "white",
+          }}
+        >
+          The Generics
+        </Navbar.Text>
       </Navbar>
 
       <h1
@@ -18,7 +26,7 @@ const About = () => {
           padding: "10px",
           textAlign: "center",
           justifyContent: "center",
-          fontSize: "50px",
+          fontSize: "30px",
           fontFamily: "cursive",
         }}
       >
@@ -66,23 +74,7 @@ const About = () => {
         </div>
       </center>
 
-      <Navbar variant="dark" bg="dark" expand="lg">
-        <Container>
-          <Navbar.Brand href="#home">About Page</Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>Follow as on</Navbar.Text>
-            <div>{"---"}</div>
-            <Image
-              src="https://help.runcfs.com/hubfs/Smart%20Objects/smart56.2.png"
-              style={{
-                width: "150px",
-                height: "auto",
-              }}
-            ></Image>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <Footer pagename="About"></Footer>
     </>
   );
 };
