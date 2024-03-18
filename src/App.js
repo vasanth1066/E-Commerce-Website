@@ -1,24 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Display from "./Components/Display";
-import Header from "./Components/Header/Header";
-import Cart from "./Components/Cart/Cart";
-import CartProvider from "./Components/Store/CartProvider";
+import Store from "./Components/Pages/Store";
+import About from "./Components/Pages/About";
+
+const router = createBrowserRouter([
+  { path: "/", element: <Store /> },
+  { path: "/About", element: <About /> },
+]);
 
 function App() {
-  const [showcart, setShowcart] = useState(false);
-
-  const handlerCartClick = () => {
-    setShowcart(true);
-  };
-  return (
-    <CartProvider>
-      <Header onClick={handlerCartClick}></Header>
-      <Display />
-      {showcart && <Cart />}
-    </CartProvider>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
